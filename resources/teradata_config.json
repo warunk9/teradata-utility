@@ -7,7 +7,7 @@
     "password" : "warun"
   },
   "output" : {
-    "local_dir": "/home/ext_warunk_google_com/warunk/viewsdir",
+    "local_dir": "/home/warunk/warunk/tdutil/output",
     "bucket_name": "view-migration"
   }
 }

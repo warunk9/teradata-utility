@@ -45,5 +45,5 @@ if __name__ == "__main__":
         filename = view+".sql"
         Utility.write_string_to_file(filename, full_ddl, local_dir)
 
-    Utility.upload_files_to_gcs(local_dir, bucket_name)
+    #Utility.upload_files_to_gcs(local_dir, bucket_name)
 
