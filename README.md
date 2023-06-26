@@ -18,8 +18,8 @@ pip3 install dwh-migration-tools/client
         "hostname": "141.206.4.13",
         "port": "1025",
         "db" : "r2d2_dba",
-        "username" : "WARUN",
-        "password" : "warun"
+        "username" : "xxxxxxx",
+        "password" : "xxxxx"
     },
     "output" : {
         "local_dir": "/home/warunk/warunk/tdutil/output",
