@@ -15,9 +15,9 @@ pip3 install dwh-migration-tools/client
 ````
 {
     "jdbc" : {
-        "hostname": "141.206.4.13",
-        "port": "1025",
-        "db" : "r2d2_dba",
+        "hostname": "hostname",
+        "port": "port",
+        "db" : "databse",
         "username" : "xxxxxxx",
         "password" : "xxxxx"
     },
