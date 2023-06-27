@@ -4,7 +4,8 @@
     "port": "1025",
     "db" : "r2d2_dba",
     "username" : "xxxxxx",
-    "password" : "xxxxx"
+    "password" : "xxxxx",
+    "table_kind": "V"
   },
   "output" : {
     "local_dir": "/home/warunk/warunk/tdutil/output",

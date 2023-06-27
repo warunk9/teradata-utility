@@ -2,6 +2,7 @@ import re
 import os
 import io
 import google.cloud.storage as gcs
+import teradatasql
 
 
 class Utility:
@@ -53,26 +54,13 @@ class Utility:
             print(f"writing {string} in file {filename} failed with exception {e}")
 
     @staticmethod
-    def upload_files_to_gcs(local_directory, bucket_name):
-        """Uploads all files from the local directory to the Google Cloud Storage bucket.
-
-        Raises:
-            FileNotFoundError: If the local directory does not exist.
-        """
-        credentials = {
-            "project_id": "my-project-id",
-            "client_email": "my-client-email",
-            "client_secret": "my-client-secret",
-            "refresh_token": "my-refresh-token",
-        }
-
-        # Create a Google Cloud Storage client.
-        client = gcs.Client()
-
-        # Iterate over all files in the local directory.
-        for file in os.listdir(local_directory):
-            # Get the full path of the file.
-            file_path = os.path.join(local_directory, file)
-
-            # Upload the file to the Google Cloud Storage bucket.
-            client.bucket(bucket_name).blob(file).upload_from_file(file_path)
+    def get_teradata_conn_cursor(hostname, port, user_name, pass_w, database):
+        """Reads data from a Teradata database using teradatasql."""
+        conn = teradatasql.connect(
+            host=hostname,
+            dbs_port=port,
+            user=user_name,
+            password=pass_w,
+            database=database,
+        )
+        return conn.cursor()
