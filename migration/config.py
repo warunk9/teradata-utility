@@ -18,8 +18,7 @@ class Configuration(object):
         db = config_json_ob.jdbc.db
         username = config_json_ob.jdbc.username
         password = config_json_ob.jdbc.password
-        table_kind = config_json_ob.jdbc.table_kind
         local_dir = config_json_ob.output.local_dir
-        bucket_name = config_json_ob.output.bucket_name
+        table_kind = config_json_ob.output.table_kind
 
-        return hostname, port, db, username, password, table_kind, local_dir, bucket_name
+        return hostname, port, db, username, password, local_dir, table_kind

@@ -24,15 +24,14 @@ def log(message):
 if __name__ == "__main__":
     config_file = sys.argv[1]
     config = Configuration()
-    hostname, port, db, username, password, table_kind, \
-        local_dir, bucket_name = config.get_params_from_json(config_file)
+    hostname, port, db, username, password, local_dir, \
+        table_kind = config.get_params_from_json(config_file)
 
     log(f"hostname: {hostname}")
     log(f"port: {port}")
     log(f"db: {db}")
     log(f"username: {username}")
     log(f"local output dir : {local_dir}")
-    log(f"bucket_name output  : {bucket_name}")
     meta_table_view = "DBC.TablesV"
     query = f"SELECT tableName FROM {meta_table_view} where databaseName = '{db}' and " \
             f"tableKind = '{table_kind}' " \
