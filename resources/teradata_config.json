@@ -4,11 +4,10 @@
     "port": "1025",
     "db" : "r2d2_dba",
     "username" : "xxxxxx",
-    "password" : "xxxxx",
-    "table_kind": "V"
+    "password" : "xxxxx"
   },
   "output" : {
     "local_dir": "/home/warunk/warunk/tdutil/output",
-    "bucket_name": "view-migration"
+    "table_kind": "V"
   }
 }

@@ -1,7 +1,6 @@
 import re
 import os
 import io
-import google.cloud.storage as gcs
 import teradatasql
 
 
@@ -18,16 +17,19 @@ class Utility:
         get_view_ddl_query = "show view " + view
         cursor_ob.execute(get_view_ddl_query)
         ddl = cursor_ob.fetchone()
-        string_ddl = Utility.list_to_string(ddl)
-        return string_ddl
+        # string_ddl = Utility.list_to_string(ddl)
+        return ddl
 
     @staticmethod
     def list_to_string(list_input):
         """Converts a list into a single line string."""
+        # Check if the input is a list.
+        if not isinstance(list_input, list):
+            raise TypeError("The input must be a list.")
         string_output = ""
         for item in list_input:
             string_output += str(item) + " "
-        return Utility.replace_cr_by_lf(string_output)
+        return Utility.replace_cr_by_lf(string_output).strip()
 
     @staticmethod
     def replace_cr_by_lf(query):
@@ -51,16 +53,19 @@ class Utility:
             with open(os.path.join(local_op, filename), "w") as f:
                 f.write(file_object.getvalue())
         except Exception as e:
-            print(f"writing {string} in file {filename} failed with exception {e}")
+            print(f"[ERROR]: writing {string} in file {filename} failed with exception {e}")
 
     @staticmethod
     def get_teradata_conn_cursor(hostname, port, user_name, pass_w, database):
         """Reads data from a Teradata database using teradatasql."""
-        conn = teradatasql.connect(
-            host=hostname,
-            dbs_port=port,
-            user=user_name,
-            password=pass_w,
-            database=database,
-        )
-        return conn.cursor()
+        try:
+            conn = teradatasql.connect(
+                host=hostname,
+                dbs_port=port,
+                user=user_name,
+                password=pass_w,
+                database=database,
+            )
+            return conn.cursor()
+        except Exception as e:
+            print(f"[ERROR]: connection failure with exception {e}")
